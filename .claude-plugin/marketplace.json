@@ -1,0 +1,18 @@
+{
+  "name": "technotronic-tools",
+  "owner": {
+    "name": "Eli P",
+    "email": "eli.p@wnwd.com"
+  },
+  "plugins": [
+    {
+      "name": "auto-code-reviewer",
+      "source": ".",
+      "description": "Rules-based code reviewer with post-commit auto-review. Applies 57 coding standards automatically after every commit.",
+      "version": "1.0.0",
+      "author": { "name": "Eli P", "email": "eli.p@wnwd.com" },
+      "homepage": "https://github.com/technotronic12/auto-code-reviewer",
+      "keywords": ["code-review", "post-commit", "auto-review", "coding-standards", "hooks"]
+    }
+  ]
+}
