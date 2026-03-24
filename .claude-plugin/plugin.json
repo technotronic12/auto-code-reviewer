@@ -4,6 +4,5 @@
   "description": "Rules-based code reviewer with post-commit auto-review workflow. Applies 57 coding standards automatically after every commit.",
   "author": { "name": "Eli P", "email": "eli.p@wnwd.com" },
   "keywords": ["code-review", "post-commit", "auto-review", "coding-standards"],
-  "skills": "./skills/",
-  "hooks": "./hooks/hooks.json"
+  "skills": "./skills/"
 }
