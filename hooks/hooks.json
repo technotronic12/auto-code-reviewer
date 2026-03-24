@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./hooks/safety-guard.sh"
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/safety-guard.sh"
           }
         ]
       }
@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./hooks/post-commit-review.sh"
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/post-commit-review.sh"
           }
         ]
       }
