@@ -20,6 +20,12 @@ if [ "$TOOL_NAME" = "Bash" ]; then
     exit 0
   fi
 
+  # DENY: git force push (must be before general git push check)
+  if echo "$COMMAND" | grep -qE 'git\s+push\s+.*--force'; then
+    jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: "Blocked: force push is not allowed. Use --force-with-lease if absolutely necessary."}}'
+    exit 0
+  fi
+
   # ASK: git push (any variant)
   if echo "$COMMAND" | grep -qE '(^|\s)git\s+push'; then
     jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "ask", permissionDecisionReason: "This will push to a remote repository — please confirm"}}'
@@ -29,12 +35,6 @@ if [ "$TOOL_NAME" = "Bash" ]; then
   # ASK: git reset --hard
   if echo "$COMMAND" | grep -qE 'git\s+reset\s+--hard'; then
     jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "ask", permissionDecisionReason: "git reset --hard will discard uncommitted changes — please confirm"}}'
-    exit 0
-  fi
-
-  # ASK: git force push
-  if echo "$COMMAND" | grep -qE 'git\s+push\s+.*--force'; then
-    jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: "Blocked: force push is not allowed. Use --force-with-lease if absolutely necessary."}}'
     exit 0
   fi
 
